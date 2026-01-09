@@ -1,0 +1,14 @@
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/bin/Debug/net9.0/ImplementationTask
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/bin/Debug/net9.0/ImplementationTask.deps.json
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/bin/Debug/net9.0/ImplementationTask.runtimeconfig.json
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/bin/Debug/net9.0/ImplementationTask.dll
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/bin/Debug/net9.0/ImplementationTask.pdb
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.GeneratedMSBuildEditorConfig.editorconfig
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.AssemblyInfoInputs.cache
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.AssemblyInfo.cs
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.csproj.CoreCompileInputs.cache
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.dll
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/refint/ImplementationTask.dll
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.pdb
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ImplementationTask.genruntimeconfig.cache
+/Users/byszukb/RiderProjects/ImplementationTask/ImplementationTask/obj/Debug/net9.0/ref/ImplementationTask.dll
