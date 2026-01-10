@@ -1,4 +1,6 @@
-namespace ImplementationTask;
+using ImplementationTask.Structures;
+
+namespace ImplementationTask.Core;
 
 /// <summary>
 /// Klasa odpowiedzialna za logikę Drzewa Huffmana: 

@@ -1,4 +1,7 @@
-namespace ImplementationTask;
+using ImplementationTask.IO;
+using ImplementationTask.Structures;
+
+namespace ImplementationTask.UI;
 
 public class TextMenu
 {

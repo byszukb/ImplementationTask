@@ -1,4 +1,4 @@
-namespace ImplementationTask;
+namespace ImplementationTask.Structures;
 
 //Klasa węzła drzewa Huffmana
 public class Node() : IComparable<Node>

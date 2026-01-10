@@ -1,4 +1,4 @@
-namespace ImplementationTask;
+namespace ImplementationTask.Structures;
 
 /// <summary>
 /// Własna implementacja Kolejki Priorytetowej oparta na Kopcu Minimalnym (Min-Heap).

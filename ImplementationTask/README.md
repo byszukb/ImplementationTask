@@ -61,17 +61,22 @@ A:01;B:10;C:11;\n:110
 
 ## Struktura projektu
 
-| Plik | Opis |
-|------|------|
-| `Program.cs` | Punkt wejścia |
-| `TextMenu.cs` | Menu użytkownika |
-| `PriorityQueue.cs` | Kolejka priorytetowa (min-heap) |
-| `Node.cs` | Węzeł drzewa Huffmana |
-| `HuffmanTree.cs` | Budowanie drzewa i generowanie kodów |
-| `HuffmanCoder.cs` | Kodowanie i dekodowanie tekstu |
-| `FileService.cs` | Operacje na plikach |
-| `BitWriter.cs` | Zapis bitów do pliku |
-| `BitReader.cs` | Odczyt bitów z pliku |
+```
+ImplementationTask/
+├── Program.cs              # Punkt wejścia
+├── Core/
+│   ├── HuffmanTree.cs      # Budowanie drzewa i generowanie kodów
+│   └── HuffmanCoder.cs     # Kodowanie i dekodowanie tekstu
+├── Structures/
+│   ├── PriorityQueue.cs    # Kolejka priorytetowa (min-heap)
+│   └── Node.cs             # Węzeł drzewa Huffmana
+├── IO/
+│   ├── FileService.cs      # Operacje na plikach
+│   ├── BitWriter.cs        # Zapis bitów do pliku
+│   └── BitReader.cs        # Odczyt bitów z pliku
+└── UI/
+    └── TextMenu.cs         # Menu użytkownika
+```
 
 ## Autor
 Bartłomiej Byszuk

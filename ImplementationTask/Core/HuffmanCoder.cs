@@ -1,6 +1,7 @@
 using System.Text;
+using ImplementationTask.Structures;
 
-namespace ImplementationTask;
+namespace ImplementationTask.Core;
 
 public class HuffmanCoder
 {

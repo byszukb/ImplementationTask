@@ -1,6 +1,8 @@
 using System.Text;
+using ImplementationTask.Core;
+using ImplementationTask.Structures;
 
-namespace ImplementationTask;
+namespace ImplementationTask.IO;
 
 /// <summary>
 /// Klasa statyczna odpowiedzialna za fizyczny zapis i odczyt skompresowanych danych z dysku.

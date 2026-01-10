@@ -1,4 +1,4 @@
-namespace ImplementationTask;
+namespace ImplementationTask.IO;
 
 public class BitReader
 {
