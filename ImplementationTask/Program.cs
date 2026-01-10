@@ -1,3 +1,4 @@
-﻿var queue = new ImplementationTask.PriorityQueue();
-var menu = new ImplementationTask.TextMenu(queue);
-menu.Run();
+﻿using ImplementationTask;
+
+var menu = new TextMenu();
+menu.RunMainMenu();

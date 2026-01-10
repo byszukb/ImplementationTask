@@ -2,126 +2,231 @@ namespace ImplementationTask;
 
 public class TextMenu
 {
-    private readonly PriorityQueue _queue;
-
-    public TextMenu(PriorityQueue queue)
+    /// <summary>
+    /// Główna pętla aplikacji. Wyświetla opcje i steruje przepływem.
+    /// </summary>
+    public void RunMainMenu()
     {
-        _queue = queue;
-    }
-
-    public void Run()
-    {
-        bool running = true;
-        while (running)
+        while (true)
         {
             Console.Clear();
-            Console.WriteLine("=== TEST KOLEJKI PRIORYTETOWEJ ===");
-            Console.WriteLine($"Liczba elementów: {_queue.Count}");
-            Console.WriteLine("1. Dodaj element (Insert)");
-            Console.WriteLine("2. Pobierz minimum (ExtractMin)");
-            Console.WriteLine("3. Zmień priorytet (ChangePriority)");
-            Console.WriteLine("4. Zbuduj z przykładowych danych (Build)");
-            Console.WriteLine("5. Sprawdź czy pusta (IsEmpty)");
-            Console.WriteLine("6. Uruchom test weryfikacyjny");
-            Console.WriteLine("7. Wyświetl stan kolejki");
+            Console.WriteLine("==========================================");
+            Console.WriteLine("      KOMPRESOR HUFFMANA - MENU GŁÓWNE    ");
+            Console.WriteLine("==========================================");
+            Console.WriteLine("1. Kompresuj plik (Tekst -> Huffman)");
+            Console.WriteLine("2. Dekompresuj plik (Huffman -> Tekst)");
+            Console.WriteLine("3. Narzędzia deweloperskie (Test Kolejki Priorytetowej)");
             Console.WriteLine("0. Wyjście");
+            Console.WriteLine("==========================================");
+            Console.Write("Wybierz opcję: ");
+
+            var key = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            switch (key)
+            {
+                case '1':
+                    ShowCompressionMenu();
+                    break;
+                case '2':
+                    ShowDecompressionMenu();
+                    break;
+                case '3':
+                    ShowQueueDebugMenu();
+                    break;
+                case '0':
+                    Console.WriteLine("Do widzenia!");
+                    return;
+                default:
+                    Console.WriteLine("\nNieznana opcja. Naciśnij dowolny klawisz...");
+                    Console.ReadKey();
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Podmenu do testowania samej struktury danych
+    /// </summary>
+    private void ShowQueueDebugMenu()
+    {
+        // Tworzymy nową kolejkę na potrzeby testów
+        PriorityQueue debugQueue = new PriorityQueue();
+        
+        bool inDebug = true;
+        while (inDebug)
+        {
+            Console.Clear();
+            Console.WriteLine("=== DEBUG: KOLEJKA PRIORYTETOWA ===");
+            Console.WriteLine($"Liczba elementów: {debugQueue.Count}");
+            Console.WriteLine("1. Insert (Dodaj)");
+            Console.WriteLine("2. ExtractMin (Pobierz)");
+            Console.WriteLine("3. ChangePriority (Zmień wagę)");
+            Console.WriteLine("4. Build (Zbuduj z danych testowych)");
+            Console.WriteLine("5. IsEmpty?");
+            Console.WriteLine("6. PrintQueueState (Podgląd kopca)");
+            Console.WriteLine("0. Powrót do menu głównego");
             Console.Write("\nWybierz opcję: ");
 
             switch (Console.ReadLine())
             {
                 case "1":
-                    Console.Write("Podaj znak: ");
-                    char symbol = Console.ReadKey().KeyChar;
-                    Console.WriteLine();
-                    Console.Write("Podaj częstość (int): ");
-                    if (int.TryParse(Console.ReadLine(), out int freq))
-                    {
-                        _queue.Insert(new Node(symbol, freq));
-                        Console.WriteLine("Dodano!");
-                    }
-                    break;
-
-                case "2":
-                    try
-                    {
-                        var min = _queue.ExtractMin();
-                        Console.WriteLine($"\nPobrano: [{min.Symbol}] z wagą {min.Frequency}");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"\nBłąd: {ex.Message}");
-                    }
-                    break;
-
-                case "3":
-                    Console.Write("Podaj znak do zmiany: ");
+                    Console.Write("Znak: ");
                     char s = Console.ReadKey().KeyChar;
                     Console.WriteLine();
-                    Console.Write("Podaj nową (mniejszą) częstość: ");
-                    if (int.TryParse(Console.ReadLine(), out int newFreq))
+                    Console.Write("Waga (int): ");
+                    if (int.TryParse(Console.ReadLine(), out int f))
                     {
-                        try
-                        {
-                            _queue.ChangePriority(s, newFreq);
-                            Console.WriteLine("Zmieniono priorytet.");
-                        }
-                        catch (Exception ex) { Console.WriteLine(ex.Message); }
+                        debugQueue.Insert(new Node(s, f));
+                        Console.WriteLine("Dodano.");
                     }
                     break;
-
+                case "2":
+                    try {
+                        var min = debugQueue.ExtractMin();
+                        Console.WriteLine($"Pobrano: [{min.Symbol}] waga: {min.Frequency}");
+                    } catch (Exception e) { PrintError(e.Message); }
+                    break;
+                case "3":
+                    Console.Write("Znak: ");
+                    char c = Console.ReadKey().KeyChar;
+                    Console.WriteLine();
+                    Console.Write("Nowa waga: ");
+                    if (int.TryParse(Console.ReadLine(), out int nf))
+                        debugQueue.ChangePriority(c, nf);
+                    break;
                 case "4":
-                    var data = new List<Node>
-                    {
-                        new Node('A', 10),
-                        new Node('B', 5),
-                        new Node('C', 20),
-                        new Node('D', 1) 
-                    };
-                    _queue.Build(data);
-                    Console.WriteLine("\nZbudowano kolejkę z: A(10), B(5), C(20), D(1)");
+                    debugQueue.Build(new List<Node> { new('A', 10), new('B', 5), new('C', 20), new('D', 1) });
+                    Console.WriteLine("Zbudowano testową kolejkę.");
                     break;
-                
                 case "5":
-                    Console.WriteLine($"\nCzy pusta? {_queue.IsEmpty()}");
+                    Console.WriteLine($"Pusta? {debugQueue.IsEmpty()}");
                     break;
-
                 case "6":
-                    Console.WriteLine("--- TEST WERYFIKACYJNY ---");
-                    // 1. Czyścimy kolejkę (żeby stare dane nie przeszkadzały)
-                    // Uwaga: Możesz potrzebować metody Clear() w PriorityQueue (Elements.Clear())
-                    // Lub po prostu stwórz nową instancję kolejki na potrzeby testu.
-                    var testQueue = new PriorityQueue(); 
-    
-                    Console.WriteLine("Dodaję losowo: Z(50), A(10), K(5), B(30)");
-                    testQueue.Insert(new Node('Z', 50));
-                    testQueue.Insert(new Node('A', 10));
-                    testQueue.Insert(new Node('K', 5));
-                    testQueue.Insert(new Node('B', 30));
-    
-                    Console.WriteLine("\nTeraz wyciągam (ExtractMin) wszystko po kolei:");
-                    while (!testQueue.IsEmpty())
-                    {
-                        var n = testQueue.ExtractMin();
-                        Console.Write($"{n.Frequency}({n.Symbol}) -> ");
-                    }
-                    Console.WriteLine("KONIEC");
-                    Console.WriteLine("\nJeśli widzisz: 5(K) -> 10(A) -> 30(B) -> 50(Z), to DZIAŁA!");
+                    debugQueue.PrintQueueState();
                     break;
-                
-                case "7":
-                    _queue.PrintQueueState();
-                    break;
-
                 case "0":
-                    running = false;
+                    inDebug = false;
                     break;
             }
-            
-            if (running)
-            {
-                Console.WriteLine("\nNaciśnij dowolny klawisz...");
-                Console.ReadKey();
-            }
+            if (inDebug) WaitForKey();
         }
+    }
+
+    /// <summary>
+    /// Interfejs użytkownika dla procesu dekompresji.
+    /// </summary>
+    private void ShowDecompressionMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("--- DEKOMPRESJA PLIKU ---");
+
+        Console.Write("Podaj ścieżkę do pliku .huff: ");
+        string inputPath = Console.ReadLine() ?? "";
+
+        Console.Write("Podaj nazwę pliku wyjściowego (np. odzyskany.txt): ");
+        string outputPath = Console.ReadLine() ?? "odzyskany.txt";
+        
+        Console.Write("Podaj separator użyty przy kompresji (ENTER = domyślny ';'): ");
+        string sepInput = Console.ReadLine();
+        string separator = string.IsNullOrEmpty(sepInput) ? ";" : sepInput;
+
+        if (!File.Exists(inputPath))
+        {
+            PrintError($"Plik '{inputPath}' nie istnieje!");
+            return;
+        }
+
+        try
+        {
+            Console.WriteLine("\nRozpoczynam dekompresję...");
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            // Wywołanie logiki biznesowej
+            FileService.Decompress(inputPath, outputPath, separator);
+
+            watch.Stop();
+            PrintSuccess($"Gotowe! Plik zapisano jako: {outputPath}");
+            Console.WriteLine($"Czas operacji: {watch.ElapsedMilliseconds} ms");
+        }
+        catch (Exception ex)
+        {
+            PrintError(ex.Message);
+        }
+
+        WaitForKey();
+    }
+
+    /// <summary>
+    /// Interfejs użytkownika dla procesu kompresji.
+    /// </summary>
+    private void ShowCompressionMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("--- KOMPRESJA PLIKU ---");
+        
+        Console.Write("Podaj ścieżkę do pliku wejściowego (np. dane.txt): ");
+        string inputPath = Console.ReadLine() ?? "dane.txt";
+
+        Console.Write("Podaj nazwę pliku wynikowego (np. wynik.huff): ");
+        string outputPath = Console.ReadLine() ?? "wynik.huff";
+        
+        Console.Write("Podaj separator nagłówka (ENTER = domyślny ';'): ");
+        string sepInput = Console.ReadLine();
+        string separator = string.IsNullOrEmpty(sepInput) ? ";" : sepInput;
+
+        if (!File.Exists(inputPath))
+        {
+            PrintError($"Plik '{inputPath}' nie istnieje!");
+            return;
+        }
+
+        try
+        {
+            Console.WriteLine("\nRozpoczynam kompresję...");
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            // Wywołanie kompresji
+            FileService.Compress(inputPath, outputPath, separator);
+
+            watch.Stop();
+            PrintSuccess($"Zakończono w {watch.ElapsedMilliseconds} ms.");
+            
+            // Statystyki
+            long originalSize = new FileInfo(inputPath).Length;
+            long compressedSize = new FileInfo(outputPath).Length;
+            Console.WriteLine($"Oryginał:   {originalSize} bajtów");
+            Console.WriteLine($"Po zmianie: {compressedSize} bajtów");
+            if (originalSize > 0)
+                Console.WriteLine($"Ratio:      {((double)compressedSize / originalSize):P2}");
+        }
+        catch (Exception ex)
+        {
+            PrintError(ex.Message);
+        }
+        
+        WaitForKey();
+    }
+    
+    private void PrintError(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"\nBŁĄD: {msg}");
+        Console.ResetColor();
+        WaitForKey();
+    }
+
+    private void PrintSuccess(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"\n{msg}");
+        Console.ResetColor();
+        WaitForKey();
+    }
+
+    private void WaitForKey()
+    {
+        Console.WriteLine("\nNaciśnij dowolny klawisz...");
+        Console.ReadKey();
     }
 }

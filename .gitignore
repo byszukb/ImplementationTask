@@ -1,0 +1,22 @@
+# Build
+bin/
+obj/
+
+# IDE - Rider
+.idea/
+*.sln.iml
+
+# IDE - Visual Studio
+.vs/
+*.user
+*.suo
+
+# IDE - VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Pliki testowe
+*.huff
