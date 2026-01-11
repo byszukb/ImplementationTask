@@ -59,6 +59,18 @@ A:01;B:10;C:11;\n:110
 - **Linia 1:** Słownik kodów (znak:kod, oddzielone separatorem)
 - **Od linii 2:** Skompresowane dane binarne
 
+## Pliki wynikowe
+
+Przy uruchomieniu przez `dotnet run`, katalogiem roboczym jest:
+
+```
+ImplementationTask/bin/Debug/net9.0/
+```
+
+Tam będą zapisywane i odczytywane pliki (np. `dane.txt`, `wynik.huff`).
+
+Aby używać plików z innego katalogu, podaj pełną ścieżkę (np. `/Users/nazwa/dokumenty/plik.txt`).
+
 ## Struktura projektu
 
 ```

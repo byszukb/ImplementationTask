@@ -4,3 +4,20 @@ Wzór: C = A + B;
 Znak specjalny: \n oraz \\
 Koniec testu.
 test, przecinkow,
+
+test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test
+dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane
+dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane
+dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane
+dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane dane
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
+plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik plik
